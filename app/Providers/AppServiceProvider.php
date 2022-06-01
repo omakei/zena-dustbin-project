@@ -49,17 +49,20 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         Model::unguard();
-
-        Dustbin::where('filling_percent','>=', 90)
-            ->where('is_full', false)->get()
-            ->each(function ($dustbin){
-            $dustbin->update(['is_full' => true]);
-        });
-
-        Dustbin::where('filling_percent','<=', 90)
-            ->where('is_full', true)->get()
-            ->each(function ($dustbin){
-                $dustbin->update(['is_full' => false]);
+      
+        if(Dustbin::count()>0) {
+            Dustbin::where('filling_percent','>=', 90)
+                ->where('is_full', false)->get()
+                ->each(function ($dustbin){
+                    $dustbin->update(['is_full' => true]);
             });
+
+            Dustbin::where('filling_percent','<=', 90)
+                ->where('is_full', true)->get()
+                ->each(function ($dustbin){
+                    $dustbin->update(['is_full' => false]);
+            });
+        }
+
     }
 }
