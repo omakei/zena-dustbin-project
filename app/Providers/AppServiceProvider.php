@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         Model::unguard();
-      
+
         if(Dustbin::count()>0) {
             Dustbin::where('filling_percent','>=', 90)
                 ->where('is_full', false)->get()
