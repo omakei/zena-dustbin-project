@@ -4,7 +4,7 @@ pipeline {
         stage("Build") {
             environment {
                 DB_HOST = credentials("localhost")
-                DB_DATABASE = credentials("zena-project")
+                DB_DATABASE = credentials("zena_project")
                 DB_USERNAME = credentials("root")
                 DB_PASSWORD = credentials("")
             }
