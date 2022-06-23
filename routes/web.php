@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('dustbin-map/{dustbin}', function (Dustbin $dustbin) {
     return view('filament.pages.dustbin-map', ['dustbin' => $dustbin]);
 })->name('map.show');
+
+
